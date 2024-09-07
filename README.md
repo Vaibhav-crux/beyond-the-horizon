@@ -6,39 +6,37 @@ Welcome to the **Beyond the Horizon** project! This application explores various
 
 ```
 ├── src/
-│   ├── controllers/         # Handles incoming requests for each domain
+│   ├── controllers/       
 │   │   ├── astronomyController.ts
 │   │   ├── spaceTechnologyController.ts
 │   └── ... (other controllers)
 │   
-│   ├── models/              # Database models and schema definitions
+│   ├── models/             
 │   │   ├── celestialBody.ts
 │   │   └── ... (other models)
 │   
-│   ├── routes/              # Routing logic for different APIs
+│   ├── routes/             
 │   │   ├── astronomyRoutes.ts
 │   │   └── ... (other routes)
 │   
-│   ├── services/            # Business logic and interaction with models
+│   ├── services/           
 │   │   ├── astronomyService.ts
 │   │   └── ... (other services)
 │   
-│   ├── middlewares/         # Error handling, authentication, and more
+│   ├── middlewares/        
 │   │   └── errorHandler.ts
 │   
-│   ├── utils/               # Utility functions such as logging
+│   ├── utils/               
 │   │   ├── logger.ts
 │   │   └── constants.ts
 │   
-│   ├── config/              # Configurations like database connections
+│   ├── config/             
 │   │   └── database.ts
-│   
-│   ├── app.ts               # Application initialization
-│   ├── server.ts            # Server configuration and startup logic
-│   └── ... (other configs like environment variables)
-├── .env                     # Environment variables
-├── .gitignore               # Files and directories to ignore in git
-└── README.md                # Documentation (this file)
+│ 
+│   ├── app.ts              
+├── .env                     
+├── .gitignore               
+└── README.md                
 ```
 
 ## 🚀 Features
@@ -156,3 +154,12 @@ We welcome contributions! Feel free to fork this project, create a branch, and s
 ## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+*Explore the cosmos, expand your knowledge, and contribute to the future of space exploration with this project!*
+
+🚀 *May your journey through the stars be infinite and full of discovery!*
+```
+
+This `README.md` provides a clear overview of the project, its structure, key features, setup instructions, and more.

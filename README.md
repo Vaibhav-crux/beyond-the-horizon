@@ -1,6 +1,3 @@
-Here's a comprehensive `README.md` content for your space project:
-
-```markdown
 # 🌌 Beyond the Horizon: Expanding Your Space Project 🚀
 
 Welcome to the **Beyond the Horizon** project! This application explores various topics in astronomy, space exploration, and space technology. Whether you're fascinated by celestial bodies or intrigued by the future of space travel, this project will guide you through the wonders of the universe.
@@ -159,12 +156,3 @@ We welcome contributions! Feel free to fork this project, create a branch, and s
 ## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-*Explore the cosmos, expand your knowledge, and contribute to the future of space exploration with this project!*
-
-🚀 *May your journey through the stars be infinite and full of discovery!*
-```
-
-This `README.md` provides a clear overview of the project, its structure, key features, setup instructions, and more.

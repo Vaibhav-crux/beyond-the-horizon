@@ -154,12 +154,3 @@ We welcome contributions! Feel free to fork this project, create a branch, and s
 ## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-*Explore the cosmos, expand your knowledge, and contribute to the future of space exploration with this project!*
-
-🚀 *May your journey through the stars be infinite and full of discovery!*
-```
-
-This `README.md` provides a clear overview of the project, its structure, key features, setup instructions, and more.

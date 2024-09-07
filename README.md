@@ -9,39 +9,37 @@ Welcome to the **Beyond the Horizon** project! This application explores various
 
 ```
 ├── src/
-│   ├── controllers/         # Handles incoming requests for each domain
+│   ├── controllers/       
 │   │   ├── astronomyController.ts
 │   │   ├── spaceTechnologyController.ts
 │   └── ... (other controllers)
 │   
-│   ├── models/              # Database models and schema definitions
+│   ├── models/             
 │   │   ├── celestialBody.ts
 │   │   └── ... (other models)
 │   
-│   ├── routes/              # Routing logic for different APIs
+│   ├── routes/             
 │   │   ├── astronomyRoutes.ts
 │   │   └── ... (other routes)
 │   
-│   ├── services/            # Business logic and interaction with models
+│   ├── services/           
 │   │   ├── astronomyService.ts
 │   │   └── ... (other services)
 │   
-│   ├── middlewares/         # Error handling, authentication, and more
+│   ├── middlewares/        
 │   │   └── errorHandler.ts
 │   
-│   ├── utils/               # Utility functions such as logging
+│   ├── utils/               
 │   │   ├── logger.ts
 │   │   └── constants.ts
 │   
-│   ├── config/              # Configurations like database connections
+│   ├── config/             
 │   │   └── database.ts
-│   
-│   ├── app.ts               # Application initialization
-│   ├── server.ts            # Server configuration and startup logic
-│   └── ... (other configs like environment variables)
-├── .env                     # Environment variables
-├── .gitignore               # Files and directories to ignore in git
-└── README.md                # Documentation (this file)
+│ 
+│   ├── app.ts              
+├── .env                     
+├── .gitignore               
+└── README.md                
 ```
 
 ## 🚀 Features

@@ -1,31 +1,29 @@
 import { Request, Response, NextFunction } from 'express';
 import { createCelestialBodyDetails, getAllCelestialBodyDetails, updateCelestialBodyDetails, deleteCelestialBodyDetails } from '../../services/celestialBody/celestialBodyDetailsService';
+import logger from '../../utils/log/logger';
 
 export async function getCelestialBodyDetailsController(req: Request, res: Response, next: NextFunction): Promise<void> {
-    try {
-      // Fetch all celestial body details
-      const celestialBodyDetails = await getAllCelestialBodyDetails();
-  
-      // Respond with the fetched data
-      res.status(200).json(celestialBodyDetails);
-    } catch (error) {
-      console.error('Error fetching celestial body details in controller:', error);
-      next(error); // Pass the error to the error handler middleware
-    }
+  try {
+    const celestialBodyDetails = await getAllCelestialBodyDetails();
+    logger.info('Controller: Fetched celestial body details successfully.');
+    res.status(200).json(celestialBodyDetails);
+  } catch (error) {
+    logger.error('Error fetching celestial body details in controller:', error);
+    next(error);
   }
+}
 
 export async function createCelestialBodyDetailsController(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     const { celestialBodyId, details, avgDistance, estTravelTime, summary } = req.body;
 
-    // Validate request body
     if (!celestialBodyId || !details || !avgDistance || !estTravelTime || !summary) {
       const error = new Error('All fields are required');
-      error.name = 'ValidationError'; // Set the error name to trigger the correct error handler
+      error.name = 'ValidationError';
+      logger.warn('Validation error: Missing required fields in request body.');
       throw error;
     }
 
-    // Call the service to create a new celestial body detail
     const newCelestialBodyDetails = await createCelestialBodyDetails(
       celestialBodyId,
       details,
@@ -34,11 +32,11 @@ export async function createCelestialBodyDetailsController(req: Request, res: Re
       summary
     );
 
-    // Respond with the created celestial body details
+    logger.info('Controller: Created celestial body details successfully.');
     res.status(201).json(newCelestialBodyDetails);
   } catch (error) {
-    console.error('Error creating celestial body details in controller:', error);
-    next(error); // Pass the error to the error handler middleware
+    logger.error('Error creating celestial body details in controller:', error);
+    next(error);
   }
 }
 
@@ -47,27 +45,27 @@ export async function updateCelestialBodyDetailsController(req: Request, res: Re
     const { id } = req.params;
     const updates = req.body;
 
-    // Validate request body
     if (!id || Object.keys(updates).length === 0) {
       const error = new Error('ID and at least one update field are required');
       error.name = 'ValidationError';
+      logger.warn('Validation error: ID or update fields missing in request.');
       throw error;
     }
 
-    // Call the service to update celestial body details
     const updatedCelestialBodyDetails = await updateCelestialBodyDetails(id, updates);
 
     if (!updatedCelestialBodyDetails) {
       const error = new Error('Celestial Body Details not found');
       error.name = 'NotFoundError';
+      logger.warn(`Controller: Celestial Body Details with ID ${id} not found.`);
       throw error;
     }
 
-    // Respond with the updated celestial body details
+    logger.info('Controller: Updated celestial body details successfully.');
     res.status(200).json(updatedCelestialBodyDetails);
   } catch (error) {
-    console.error('Error updating celestial body details in controller:', error);
-    next(error); // Pass the error to the error handler middleware
+    logger.error('Error updating celestial body details in controller:', error);
+    next(error);
   }
 }
 
@@ -75,20 +73,19 @@ export async function deleteCelestialBodyDetailsController(req: Request, res: Re
   try {
     const { id } = req.params;
 
-    // Validate the ID
     if (!id) {
       const error = new Error('ID is required');
       error.name = 'ValidationError';
+      logger.warn('Validation error: ID missing in request.');
       throw error;
     }
 
-    // Call the service to delete celestial body details
     await deleteCelestialBodyDetails(id);
 
-    // Respond with a success message
+    logger.info('Controller: Deleted celestial body details successfully.');
     res.status(200).json({ message: 'Celestial Body Details deleted successfully' });
   } catch (error) {
-    console.error('Error deleting celestial body details in controller:', error);
-    next(error); // Pass the error to the error handler middleware
+    logger.error('Error deleting celestial body details in controller:', error);
+    next(error);
   }
 }

@@ -1,20 +1,20 @@
 import CelestialBodyDetails, { ICelestialBodyDetails } from '../../models/CelestialBodyDetails';
 import CelestialBody from '../../models/CelestialBody';
+import logger from '../../utils/log/logger';
 
 export async function getAllCelestialBodyDetails(): Promise<ICelestialBodyDetails[]> {
   try {
-    // Fetch all celestial body details and populate the associated celestial body name
     const celestialBodyDetails = await CelestialBodyDetails.find()
-      .populate('celestialBody', 'name')  // Populate the celestialBody field and only include the name field
+      .populate('celestialBody', 'name')
       .exec();
       
+    logger.info('Fetched all celestial body details successfully.');
     return celestialBodyDetails;
   } catch (error) {
-    console.error('Error fetching celestial body details in service:', error);
+    logger.error('Error fetching celestial body details in service:', error);
     throw new Error('Internal Server Error');
   }
 }
-
 
 export async function createCelestialBodyDetails(
   celestialBodyId: string,
@@ -24,14 +24,13 @@ export async function createCelestialBodyDetails(
   summary: string
 ): Promise<ICelestialBodyDetails> {
   try {
-    // Check if the CelestialBody exists
     const celestialBody = await CelestialBody.findById(celestialBodyId);
 
     if (!celestialBody) {
+      logger.warn(`Celestial Body with ID ${celestialBodyId} not found.`);
       throw new Error('Celestial Body not found');
     }
 
-    // Create a new CelestialBodyDetails instance
     const newCelestialBodyDetails = new CelestialBodyDetails({
       celestialBody: celestialBody._id,
       details,
@@ -40,46 +39,48 @@ export async function createCelestialBodyDetails(
       summary,
     });
 
-    // Save the details to the database
     await newCelestialBodyDetails.save();
 
+    logger.info(`Created new celestial body details for celestial body ID ${celestialBodyId}.`);
     return newCelestialBodyDetails;
   } catch (error) {
-    console.error('Error creating celestial body details in service:', error);
+    logger.error('Error creating celestial body details in service:', error);
     throw new Error('Internal Server Error');
   }
 }
-
 
 export async function updateCelestialBodyDetails(
   id: string,
   updates: Partial<ICelestialBodyDetails>
 ): Promise<ICelestialBodyDetails | null> {
   try {
-    // Find the celestial body detail by ID and update it with the provided data
     const updatedCelestialBodyDetails = await CelestialBodyDetails.findByIdAndUpdate(id, updates, { new: true });
 
     if (!updatedCelestialBodyDetails) {
+      logger.warn(`Celestial Body Details with ID ${id} not found for update.`);
       throw new Error('Celestial Body Details not found');
     }
 
+    logger.info(`Updated celestial body details for ID ${id}.`);
     return updatedCelestialBodyDetails;
   } catch (error) {
-    console.error('Error updating celestial body details in service:', error);
+    logger.error('Error updating celestial body details in service:', error);
     throw new Error('Internal Server Error');
   }
 }
-
 
 export async function deleteCelestialBodyDetails(id: string): Promise<void> {
   try {
     const result = await CelestialBodyDetails.findByIdAndDelete(id);
 
     if (!result) {
+      logger.warn(`Celestial Body Details with ID ${id} not found for deletion.`);
       throw new Error('Celestial Body Details not found');
     }
+
+    logger.info(`Deleted celestial body details for ID ${id}.`);
   } catch (error) {
-    console.error('Error deleting celestial body details in service:', error);
+    logger.error('Error deleting celestial body details in service:', error);
     throw new Error('Internal Server Error');
   }
 }

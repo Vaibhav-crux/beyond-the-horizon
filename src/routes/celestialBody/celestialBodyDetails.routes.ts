@@ -1,7 +1,14 @@
 import { Router } from 'express';
 import { createCelestialBodyDetailsController, getCelestialBodyDetailsController, updateCelestialBodyDetailsController, deleteCelestialBodyDetailsController } from '../../controllers/celestialBody/celestialBodyDetailsController';
+import logger from '../../utils/log/logger';
 
 const router = Router();
+
+// Log each incoming request to the celestial body details routes
+router.use((req, res, next) => {
+  logger.info(`Incoming request: ${req.method} ${req.url}`);
+  next();
+});
 
 // POST route to create a new celestial body detail
 router.post('/celestialBodyDetails', createCelestialBodyDetailsController);

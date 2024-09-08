@@ -1,28 +1,35 @@
-import CelestialBody, { ICelestialBody } from '../../models/CelestialBody'; // Import the Mongoose model and interface
+import CelestialBody, { ICelestialBody } from '../../models/CelestialBody';
 
 // Function to fetch all celestial bodies
 export async function getAllCelestialBodies(): Promise<Partial<ICelestialBody>[]> {
   try {
-    // Fetch all celestial bodies, selecting only the id and name fields
     const celestialBodies = await CelestialBody.find({}, 'id name').exec();
     return celestialBodies;
   } catch (error) {
     console.error('Error fetching celestial bodies in service:', error);
-    throw new Error('Internal Server Error');
+    throw error; // Pass the error up to be handled by the controller
   }
 }
 
 // Function to create a new celestial body
 export async function createCelestialBody(name: string): Promise<ICelestialBody> {
   try {
-    // Create a new celestial body instance
     const newCelestialBody = new CelestialBody({ name });
-    await newCelestialBody.save(); // Save the new celestial body to the database
-
+    await newCelestialBody.save();
     return newCelestialBody;
   } catch (error) {
     console.error('Error creating celestial body in service:', error);
-    throw new Error('Internal Server Error');
+    throw error; // Pass the error up to be handled by the controller
   }
 }
 
+// Function to delete a celestial body by ID
+export async function deleteCelestialBodyById(id: string): Promise<Partial<ICelestialBody> | null> {
+  try {
+    const deletedCelestialBody = await CelestialBody.findByIdAndDelete(id).exec();
+    return deletedCelestialBody;
+  } catch (error) {
+    console.error('Error deleting celestial body in service:', error);
+    throw error; // Pass the error up to be handled by the controller
+  }
+}

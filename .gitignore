@@ -16,9 +16,9 @@ yarn-error.log*
 *.db
 
 # Build outputs
-dist/
-build/
-out/
+# dist/
+# build/
+# out/
 
 # Dependency directories
 node_modules/

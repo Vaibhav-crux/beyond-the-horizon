@@ -1,13 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
 import { createCelestialBody, getAllCelestialBodies, deleteCelestialBodyById } from '../../services/celestialBody/celestialBodyService';
+import logger from '../../utils/log/logger';
 
 // Function to get all celestial bodies
 export async function getCelestialBodiesController(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     const celestialBodies = await getAllCelestialBodies();
+    logger.info('Controller: Fetched celestial bodies.');
     res.status(200).json(celestialBodies);
   } catch (error) {
-    console.error('Error fetching celestial bodies in controller:', error);
+    logger.error('Error fetching celestial bodies in controller:', error);
     next(error); // Pass the error to the error handler middleware
   }
 }
@@ -20,13 +22,15 @@ export async function createCelestialBodyController(req: Request, res: Response,
     if (!name) {
       const error = new Error('Name is required');
       error.name = 'ValidationError';
+      logger.warn('Attempt to create celestial body without a name.');
       throw error;
     }
 
     const newCelestialBody = await createCelestialBody(name);
+    logger.info(`Controller: Created celestial body with name: ${name}`);
     res.status(201).json(newCelestialBody);
   } catch (error) {
-    console.error('Error creating celestial body in controller:', error);
+    logger.error('Error creating celestial body in controller:', error);
     next(error); // Pass the error to the error handler middleware
   }
 }
@@ -39,6 +43,7 @@ export async function deleteCelestialBodyController(req: Request, res: Response,
     if (!id) {
       const error = new Error('ID is required');
       error.name = 'ValidationError';
+      logger.warn('Attempt to delete celestial body without an ID.');
       throw error;
     }
 
@@ -47,12 +52,14 @@ export async function deleteCelestialBodyController(req: Request, res: Response,
     if (!deletedCelestialBody) {
       const error = new Error('Celestial Body not found');
       error.name = 'NotFoundError';
+      logger.warn(`Celestial body with ID: ${id} not found in controller.`);
       throw error;
     }
 
+    logger.info(`Controller: Deleted celestial body with ID: ${id}`);
     res.status(200).json({ message: 'Celestial Body deleted successfully' });
   } catch (error) {
-    console.error('Error deleting celestial body in controller:', error);
+    logger.error('Error deleting celestial body in controller:', error);
     next(error); // Pass the error to the error handler middleware
   }
 }

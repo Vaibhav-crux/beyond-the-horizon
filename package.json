@@ -2,11 +2,13 @@
   "name": "space",
   "version": "1.0.0",
   "description": "This application explores various topics in astronomy, space exploration, and space technology. Whether you're fascinated by celestial bodies or intrigued by the future of space travel, this project will guide you through the wonders of the universe.",
-  "main": "app.ts",
+  "main": "dist/app.js",
   "scripts": {
-    "start": "ts-node src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js", 
+    "dev": "ts-node src/app.ts", 
     "test": "echo \"Error: no test specified\" && exit 1",
-    "stage": "tsc"
+    "stage": "npm run build && npm start"
   },
   "author": "Vaibhav",
   "license": "ISC",

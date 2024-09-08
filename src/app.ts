@@ -21,7 +21,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// Define routes
+// Define a simple route for the root URL
+app.get('/', (req, res) => {
+  res.send('Welcome to the Beyond the Horizon API!');
+});
+
+// Define API routes
 app.use('/api', userRoutes);
 app.use('/api', celestialBodyRoutes);
 app.use('/api', celestialBodyDetailRoutes);

@@ -25,3 +25,4 @@ export async function createCelestialBody(name: string): Promise<ICelestialBody>
     throw new Error('Internal Server Error');
   }
 }
+

@@ -49,3 +49,37 @@ export async function createCelestialBodyDetails(
     throw new Error('Internal Server Error');
   }
 }
+
+
+export async function updateCelestialBodyDetails(
+  id: string,
+  updates: Partial<ICelestialBodyDetails>
+): Promise<ICelestialBodyDetails | null> {
+  try {
+    // Find the celestial body detail by ID and update it with the provided data
+    const updatedCelestialBodyDetails = await CelestialBodyDetails.findByIdAndUpdate(id, updates, { new: true });
+
+    if (!updatedCelestialBodyDetails) {
+      throw new Error('Celestial Body Details not found');
+    }
+
+    return updatedCelestialBodyDetails;
+  } catch (error) {
+    console.error('Error updating celestial body details in service:', error);
+    throw new Error('Internal Server Error');
+  }
+}
+
+
+export async function deleteCelestialBodyDetails(id: string): Promise<void> {
+  try {
+    const result = await CelestialBodyDetails.findByIdAndDelete(id);
+
+    if (!result) {
+      throw new Error('Celestial Body Details not found');
+    }
+  } catch (error) {
+    console.error('Error deleting celestial body details in service:', error);
+    throw new Error('Internal Server Error');
+  }
+}

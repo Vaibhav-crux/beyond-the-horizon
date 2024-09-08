@@ -6,8 +6,7 @@
   "scripts": {
     "start": "ts-node src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "merge:prisma": "prisma-merge -b \"./prisma/schema.prisma\" -o \"./prisma/schema.prisma\" -s \"./prisma/schemas/**/*.prisma\"",
-    "prisma:setup": "npm run merge:prisma && npx prisma generate"
+    "stage": "tsc"
   },
   "author": "Vaibhav",
   "license": "ISC",

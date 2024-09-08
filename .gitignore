@@ -15,11 +15,6 @@ yarn-error.log*
 *.sqlite
 *.db
 
-# Build outputs
-# dist/
-# build/
-# out/
-
 # Dependency directories
 node_modules/
 jspm_packages/

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { createCelestialBody, getAllCelestialBodies, deleteCelestialBodyById } from '../../services/celestialBody/celestialBodyService';
+import { createCelestialBody, getAllCelestialBodies, deleteCelestialBodyById, getCelestialBodyWithDetails } from '../../services/celestialBody/celestialBodyService';
 import logger from '../../utils/log/logger';
 
 // Function to get all celestial bodies
@@ -10,6 +10,31 @@ export async function getCelestialBodiesController(req: Request, res: Response, 
     res.status(200).json(celestialBodies);
   } catch (error) {
     logger.error('Error fetching celestial bodies in controller:', error);
+    next(error); // Pass the error to the error handler middleware
+  }
+}
+
+// Controller function to get celestial body and details by celestialBodyId
+export async function getCelestialBodyDetailsController(req: Request, res: Response, next: NextFunction): Promise<void> {
+  const { celestialBodyId } = req.query;
+
+  try {
+    if (!celestialBodyId) {
+      res.status(400).json({ error: 'celestialBodyId is required.' });
+      return;
+    }
+
+    const celestialBodyDetails = await getCelestialBodyWithDetails(celestialBodyId as string);
+
+    if (!celestialBodyDetails) {
+      res.status(404).json({ error: 'Celestial body details not found.' });
+      return;
+    }
+
+    logger.info(`Controller: Fetched celestial body details for id: ${celestialBodyId}`);
+    res.status(200).json(celestialBodyDetails);
+  } catch (error) {
+    logger.error('Error fetching celestial body details in controller:', error);
     next(error); // Pass the error to the error handler middleware
   }
 }

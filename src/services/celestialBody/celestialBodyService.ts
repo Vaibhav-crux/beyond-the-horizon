@@ -1,4 +1,5 @@
 import CelestialBody, { ICelestialBody } from '../../models/CelestialBody';
+import CelestialBodyDetails from '../../models/CelestialBodyDetails';
 import logger from '../../utils/log/logger';
 
 // Function to fetch all celestial bodies
@@ -10,6 +11,28 @@ export async function getAllCelestialBodies(): Promise<Partial<ICelestialBody>[]
   } catch (error) {
     logger.error('Error fetching celestial bodies in service:', error);
     throw error; // Pass the error up to be handled by the controller
+  }
+}
+
+// Function to fetch celestial body and its details by celestialBodyId
+export async function getCelestialBodyWithDetails(celestialBodyId: string) {
+  try {
+    // Fetch the celestial body details by the celestial body ID
+    const celestialBodyDetails = await CelestialBodyDetails
+      .findOne({ celestialBody: celestialBodyId })
+      .populate('celestialBody', 'id name')  // Populate the celestialBody fields
+      .exec();
+
+    if (!celestialBodyDetails) {
+      logger.error(`Celestial body details not found for id: ${celestialBodyId}`);
+      return null;
+    }
+
+    logger.info(`Fetched celestial body details for id: ${celestialBodyId}`);
+    return celestialBodyDetails;
+  } catch (error) {
+    logger.error('Error fetching celestial body with details in service:', error);
+    throw error;
   }
 }
 

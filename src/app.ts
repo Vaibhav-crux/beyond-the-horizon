@@ -6,6 +6,7 @@ import celestialBodyRoutes from './routes/celestialBody/celestialBody.routes';
 import celestialBodyDetailRoutes from './routes/celestialBody/celestialBodyDetails.routes';
 import rocketRoutes from './routes/rocket/rocket.routes'; 
 import rocketDetaisRoutes from './routes/rocket/rocketDetail.routes'
+import spaceNewsRoutes from './routes/spaceNews/spaceNews.routes'
 import corsHandler from './middlewares/corsHandler';
 import errorHandler from './middlewares/errorHandler';
 import logger from './utils/log/logger';
@@ -33,6 +34,7 @@ app.use('/api', celestialBodyRoutes);
 app.use('/api', celestialBodyDetailRoutes);
 app.use('/api', rocketRoutes);
 app.use('/api', rocketDetaisRoutes);
+app.use('/api', spaceNewsRoutes);
 
 // Middleware to catch invalid routes
 app.use((req, res, next) => {

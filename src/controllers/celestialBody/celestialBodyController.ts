@@ -88,3 +88,4 @@ export async function deleteCelestialBodyController(req: Request, res: Response,
     next(error); // Pass the error to the error handler middleware
   }
 }
+

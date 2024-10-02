@@ -7,28 +7,39 @@ Welcome to the **Beyond the Horizon** project! This application explores various
 ```
 ├── src/
 │   ├── controllers/       
-│   │   ├── astronomyController.ts
-│   │   ├── spaceTechnologyController.ts
-│   └── ... (other controllers)
+│   │   ├── celestialBody
+|   |   |   ├── celestialBodyController.ts
+|   |   |   ├── celestialBodyDetailsController.ts
+│   │   ├── user
+|   |   |   ├── userController.ts
 │   
 │   ├── models/             
-│   │   ├── celestialBody.ts
-│   │   └── ... (other models)
-│   
+│   │   ├── CelestialBody.ts
+│   │   ├── CelestialBodyDetails.ts
+│   │   ├── User.ts
 │   ├── routes/             
-│   │   ├── astronomyRoutes.ts
-│   │   └── ... (other routes)
+│   │   ├── celestialBody
+|   |   |   ├── celestialBody.routes.ts
+|   |   |   ├── celestialBodyDetails.routes.ts
+│   │   ├── user
+|   |   |   ├── userRoutes.routes.ts
 │   
 │   ├── services/           
-│   │   ├── astronomyService.ts
-│   │   └── ... (other services)
+│   │   ├── celestialBody
+|   |   |   ├── celestialBodyService.ts
+|   |   |   ├── celestialBodyDetailsService.ts
+│   │   ├── user
+|   |   |   ├── userService.ts
 │   
 │   ├── middlewares/        
+│   │   └── corsHandler.ts
 │   │   └── errorHandler.ts
 │   
 │   ├── utils/               
-│   │   ├── logger.ts
-│   │   └── constants.ts
+│   │   ├── base
+|   |   |   ├── baseModel.ts
+│   │   ├── log
+|   |   |   ├── loggers.ts
 │   
 │   ├── config/             
 │   │   └── database.ts

@@ -101,7 +101,7 @@ Welcome to the **Beyond the Horizon** project! This application explores various
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo-name/beyond-the-horizon.git
+   git clone [https://github.com/your-repo-name/beyond-the-horizon.git](https://github.com/Vaibhav-crux/beyond-the-horizon.git)
    ```
    
 2. Navigate to the project directory:

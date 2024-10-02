@@ -155,12 +155,7 @@ We welcome contributions! Feel free to fork this project, create a branch, and s
 - **Node.js**: JavaScript runtime environment
 - **TypeScript**: For static typing
 - **Express**: Web framework for Node.js
-- **Prisma**: ORM for database management
-
-## Prisma
-- **Initialize**: `npx prisma init`
-- **Generate**: `npx prisma generate`
-- **Merge**: `npm run merge:prisma`
+- **Mongoose**: ORM for database management
 
 ## 📜 License
 

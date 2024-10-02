@@ -1,10 +1,11 @@
-import 'reflect-metadata';
 import 'dotenv/config';
 import express from 'express';
 import connectDB from './config/database';
 import userRoutes from './routes/user/userRoutes.routes';
 import celestialBodyRoutes from './routes/celestialBody/celestialBody.routes';
 import celestialBodyDetailRoutes from './routes/celestialBody/celestialBodyDetails.routes';
+import rocketRoutes from './routes/rocket/rocket.routes'; 
+import rocketDetaisRoutes from './routes/rocket/rocketDetail.routes'
 import corsHandler from './middlewares/corsHandler';
 import errorHandler from './middlewares/errorHandler';
 import logger from './utils/log/logger';
@@ -30,6 +31,8 @@ app.get('/', (req, res) => {
 app.use('/api', userRoutes);
 app.use('/api', celestialBodyRoutes);
 app.use('/api', celestialBodyDetailRoutes);
+app.use('/api', rocketRoutes);
+app.use('/api', rocketDetaisRoutes);
 
 // Middleware to catch invalid routes
 app.use((req, res, next) => {

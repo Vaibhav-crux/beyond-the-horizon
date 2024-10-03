@@ -10,17 +10,22 @@ Welcome to the **Beyond the Horizon** project! This application explores various
 │   │   ├── celestialBody
 |   |   |   ├── celestialBodyController.ts
 |   |   |   ├── celestialBodyDetailsController.ts
+│   │   ├── spaceNews
+|   |   |   ├── spaceNewsController.ts
 │   │   ├── user
 |   |   |   ├── userController.ts
 │   
 │   ├── models/             
 │   │   ├── CelestialBody.ts
 │   │   ├── CelestialBodyDetails.ts
+│   │   ├── SpaceNews.ts
 │   │   ├── User.ts
 │   ├── routes/             
 │   │   ├── celestialBody
 |   |   |   ├── celestialBody.routes.ts
 |   |   |   ├── celestialBodyDetails.routes.ts
+│   │   ├── spaceNews
+|   |   |   ├── spaceNews.routes.ts
 │   │   ├── user
 |   |   |   ├── userRoutes.routes.ts
 │   
@@ -28,6 +33,8 @@ Welcome to the **Beyond the Horizon** project! This application explores various
 │   │   ├── celestialBody
 |   |   |   ├── celestialBodyService.ts
 |   |   |   ├── celestialBodyDetailsService.ts
+│   │   ├── spaceNews
+|   |   |   ├── spaceNewsService.ts
 │   │   ├── user
 |   |   |   ├── userService.ts
 │   

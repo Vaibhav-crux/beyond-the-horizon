@@ -2,61 +2,6 @@
 
 Welcome to the **Beyond the Horizon** project! This application explores various topics in astronomy, space exploration, and space technology. Whether you're fascinated by celestial bodies or intrigued by the future of space travel, this project will guide you through the wonders of the universe.
 
-## 📁 Project Structure
-
-```
-├── src/
-│   ├── controllers/       
-│   │   ├── celestialBody
-|   |   |   ├── celestialBodyController.ts
-|   |   |   ├── celestialBodyDetailsController.ts
-│   │   ├── spaceNews
-|   |   |   ├── spaceNewsController.ts
-│   │   ├── user
-|   |   |   ├── userController.ts
-│   
-│   ├── models/             
-│   │   ├── CelestialBody.ts
-│   │   ├── CelestialBodyDetails.ts
-│   │   ├── SpaceNews.ts
-│   │   ├── User.ts
-│   ├── routes/             
-│   │   ├── celestialBody
-|   |   |   ├── celestialBody.routes.ts
-|   |   |   ├── celestialBodyDetails.routes.ts
-│   │   ├── spaceNews
-|   |   |   ├── spaceNews.routes.ts
-│   │   ├── user
-|   |   |   ├── userRoutes.routes.ts
-│   
-│   ├── services/           
-│   │   ├── celestialBody
-|   |   |   ├── celestialBodyService.ts
-|   |   |   ├── celestialBodyDetailsService.ts
-│   │   ├── spaceNews
-|   |   |   ├── spaceNewsService.ts
-│   │   ├── user
-|   |   |   ├── userService.ts
-│   
-│   ├── middlewares/        
-│   │   └── corsHandler.ts
-│   │   └── errorHandler.ts
-│   
-│   ├── utils/               
-│   │   ├── base
-|   |   |   ├── baseModel.ts
-│   │   ├── log
-|   |   |   ├── loggers.ts
-│   
-│   ├── config/             
-│   │   └── database.ts
-│ 
-│   ├── app.ts              
-├── .env                     
-├── .gitignore               
-└── README.md                
-```
-
 ## ⚙️ Setup and Installation
 
 1. Clone the repository:
